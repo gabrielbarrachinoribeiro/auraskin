@@ -1,0 +1,66 @@
+.product-drawer {
+  position: fixed;
+  inset: 0 0 auto auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: min(100%, 27.5rem);
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  overflow: hidden;
+}
+
+.product-drawer::backdrop {
+  background: rgb(21 37 29 / 40%);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.product-drawer-layout {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100%;
+}
+
+.product-drawer-content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.product-drawer-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 11 / 6;
+  object-fit: cover;
+}
+
+html:has(.product-drawer[open]) {
+  overflow: hidden;
+}
+
+.product-drawer-details {
+  padding-block: 1.75rem 2.5rem;
+}
+
+.product-drawer-contact {
+  min-height: 3.125rem;
+  padding-block: 0.875rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .product-drawer[open] {
+    animation: product-drawer-enter 250ms ease-out;
+  }
+
+  @keyframes product-drawer-enter {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
